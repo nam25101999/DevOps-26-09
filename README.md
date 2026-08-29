@@ -15,7 +15,7 @@
 
 <br/>
 
-[Khám phá Frontend](#-hướng-dẫn-cài-đặt) •
+[Khám phá Frontend](#-hướng-dẫn-cài-đặt) .
 [Khám phá Backend](#1-khởi-động-backend-api) •
 [API Docs](#-api-endpoints)
 
@@ -38,7 +38,7 @@ my-project/
 │   └── ☕ api/           # ⚙️ Backend App (Spring Boot 3, Spring Security JWT)
 ├── 📦 packages/          # 🧩 Thư viện nội bộ (Shared Utils, Type Definitions)
 ├── 🚀 infrastructure/    # 🐋 Cấu hình System (Docker, Nginx, Kubernetes scripts)
-└── 📚 docs/              # 📖 Tài liệu kỹ thuật, Sơ đồ cơ sở dữ liệu
+└── 📚 docs/              # 📖 Tài liệu kỹ thuật, Sơ đồ cơ sở dữ liệu 
 ```
 </details>
 
