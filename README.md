@@ -16,7 +16,7 @@
 <br/>
 
 [Khám phá Frontend](#-hướng-dẫn-cài-đặt) .
-[Khám phá Backend](#1-khởi-động-backend-api) •
+[Khám phá Backend](#1-khởi-động-backend-api) .
 [API Docs](#-api-endpoints)
 
 </div>
