@@ -1,7 +1,7 @@
 const API_URL = 'http://localhost:8080/api/auth';
 
-export const login = async (email, password) => {
-  const response = await fetch(${API_URL}/login, {
+export const login = async (email: string, password: string) => {
+  const response = await fetch(`${API_URL}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -19,8 +19,8 @@ export const login = async (email, password) => {
   return data;
 };
 
-export const register = async (name, email, password) => {
-  const response = await fetch(${API_URL}/register, {
+export const register = async (name: string, email: string, password: string) => {
+  const response = await fetch(`${API_URL}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, password }),

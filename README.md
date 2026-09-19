@@ -107,6 +107,41 @@ Hệ thống cung cấp sẵn các cổng giao tiếp bảo mật để test tí
 
 ---
 
+## 🐧 Tài Liệu Thực Hành Linux Commands
+
+<details>
+<summary><b>🔥 Click để xem Linux Commands cho DevOps</b></summary>
+<br/>
+
+| Phần | Nội Dung | Link |
+|:---:|:---|:---:|
+| 📌 | Lệnh cơ bản: `pwd`, `whoami`, `hostname`, `date`, `echo`, `which` | [Xem →](./docs/linux-commands/README.md#️-1-lệnh-cơ-bản) |
+| 📁 | Quản lý thư mục: `mkdir`, `cd`, `rmdir`, `tree` | [Xem →](./docs/linux-commands/README.md#-2-quản-lý-thư-mục) |
+| 📄 | Quản lý file: `touch`, `cp`, `mv`, `rm`, `echo >` | [Xem →](./docs/linux-commands/README.md#-3-quản-lý-file) |
+| 👀 | Đọc file: `cat`, `head`, `tail`, `wc`, `less` | [Xem →](./docs/linux-commands/README.md#-4-đọc-file) |
+| ✏️ | Chỉnh sửa: `nano`, `vim` | [Xem →](./docs/linux-commands/README.md#️-5-chỉnh-sửa-file) |
+| 🔍 | Tìm kiếm: `find . -name`, `find -type f` | [Xem →](./docs/linux-commands/README.md#-6-tìm-kiếm-file-find) |
+| 🔎 | GREP: `grep`, `grep -i`, `grep -n`, `grep -r` | [Xem →](./docs/linux-commands/README.md#-7-grep--cực-kỳ-quan-trọng) |
+| 🏷️ | Alias: `alias`, `unalias` | [Xem →](./docs/linux-commands/README.md#️-8-alias) |
+
+**📸 Screenshots thực hành trên Ubuntu WSL2:**
+
+| Screenshot | Nội dung |
+|:---:|:---|
+| [01-basic-commands.jpg](./docs/linux-commands/screenshots/01-basic-commands.jpg) | Lệnh cơ bản + Quản lý thư mục |
+| [02-file-management.jpg](./docs/linux-commands/screenshots/02-file-management.jpg) | Quản lý file + Đọc file |
+| [03-grep-find.jpg](./docs/linux-commands/screenshots/03-grep-find.jpg) | Tìm kiếm file + GREP |
+
+**🎬 Video Demo:**
+- [`linux-commands-real.cast`](./docs/linux-commands/videos/linux-commands-real.cast) — Asciinema recording thực tế (phát bằng `asciinema play`)
+- [`demo-script.sh`](./docs/linux-commands/videos/demo-script.sh) — Script demo đầy đủ
+
+📖 **[Xem tài liệu đầy đủ →](./docs/linux-commands/README.md)**
+
+</details>
+
+---
+
 <div align="center">
   <b>🌟 🌟 🌟 Roadmap Phát Triển Tương Lai 🌟 🌟 🌟</b>
 </div>
@@ -114,6 +149,7 @@ Hệ thống cung cấp sẵn các cổng giao tiếp bảo mật để test tí
 - [x] Khởi tạo cấu trúc dự án chuẩn Monorepo.
 - [x] Xây dựng UI Đăng nhập / Đăng ký hiện đại.
 - [x] Xây dựng JWT Authentication (Backend).
+- [x] 🐧 Thực hành Linux Commands cơ bản trên Ubuntu WSL2.
 - [ ] 🐳 Cấu hình `docker-compose.yml` chạy siêu mượt.
 - [ ] 🤖 Tự động hoá triển khai với GitHub Actions.
 - [ ] 🐘 Chuyển đổi Database sang PostgreSQL.
