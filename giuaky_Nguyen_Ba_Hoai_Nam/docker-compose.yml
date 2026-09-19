@@ -1,0 +1,50 @@
+services:
+  db:
+    build:
+      context: ./db
+    container_name: giuaky-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-dictuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dictpass}
+      POSTGRES_DB: ${POSTGRES_DB:-dictionary}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-dictuser} -d ${POSTGRES_DB:-dictionary}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+    container_name: giuaky-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER:-dictuser}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-dictpass}
+      DB_NAME: ${POSTGRES_DB:-dictionary}
+      PORT: 3000
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: giuaky-frontend
+    restart: always
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
