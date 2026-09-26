@@ -58,13 +58,24 @@ jobs:
             type=ref,event=branch
             type=ref,event=pr
 
-      - name: Build and push Docker image
+      - name: Build Docker Image
         uses: docker/build-push-action@v6
         with:
           context: ${{ matrix.service.context }}
           file: ${{ matrix.service.dockerfile }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: false
+          load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Push Docker Image to GHCR
+        if: github.event_name != 'pull_request'
+        run: |
+          echo "${{ steps.meta.outputs.tags }}" | while read -r tag; do
+            if [ -n "$tag" ]; then
+              echo "Pushing $tag to GHCR..."
+              docker push "$tag"
+            fi
+          done
