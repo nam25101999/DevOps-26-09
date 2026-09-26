@@ -151,7 +151,7 @@ Hệ thống cung cấp sẵn các cổng giao tiếp bảo mật để test tí
 - [x] Xây dựng JWT Authentication (Backend).
 - [x] 🐧 Thực hành Linux Commands cơ bản trên Ubuntu WSL2.
 - [ ] 🐳 Cấu hình `docker-compose.yml` chạy siêu mượt.
-- [ ] 🤖 Tự động hoá triển khai với GitHub Actions.
+- [x] 🤖 Tự động hoá triển khai với GitHub Actions (Build & Push Docker Image lên GHCR).
 - [ ] 🐘 Chuyển đổi Database sang PostgreSQL.
 
 ---
