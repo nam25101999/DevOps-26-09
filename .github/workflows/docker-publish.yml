@@ -1,3 +1,5 @@
+# Build and Push Docker Images to GHCR
+# Author: linh16122005
 name: Build and Push Docker Images to GHCR
 
 on:
