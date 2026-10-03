@@ -1,29 +1,30 @@
 services:
-  api:
+  db:
     build:
-      context: ./apps/api
-      dockerfile: Dockerfile
-    env_file:
-      - .env
+      context: ./giuaky_Cao_Khanh_Linh/db
     ports:
-      - "${API_PORT:-8080}:8080"
-    restart: unless-stopped
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-dictuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dictpass}
+      POSTGRES_DB: ${POSTGRES_DB:-dictionary}
     volumes:
-      - ./apps/api/src:/app/src
-      - ./apps/api/prisma:/app/prisma
+      - db-data:/var/lib/postgresql/data
 
   web:
     build:
-      context: ./apps/web
-      dockerfile: Dockerfile
-    env_file:
-      - .env
+      context: .
     ports:
-      - "${WEB_PORT:-3000}:80"
+      - "${WEB_PORT:-3000}:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER:-dictuser}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-dictpass}
+      DB_NAME: ${POSTGRES_DB:-dictionary}
+      PORT: 3000
     depends_on:
-      - api
-    restart: unless-stopped
-    volumes:
-      - ./apps/web/src:/app/src
-      - ./apps/web/public:/app/public
-      - ./apps/web/vite.config.ts:/app/vite.config.ts
+      - db
+
+volumes:
+  db-data:

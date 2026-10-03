@@ -1,0 +1,22 @@
+services:
+  db:
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-dictuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dictpass}
+      POSTGRES_DB: ${POSTGRES_DB:-dictionary}
+
+  web:
+    image: ${IMAGE_TAG:-ghcr.io/linh16122005/dictionary-app-5:latest}
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER:-dictuser}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-dictpass}
+      DB_NAME: ${POSTGRES_DB:-dictionary}
+      PORT: 3000
+    depends_on:
+      - db
