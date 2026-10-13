@@ -11,10 +11,20 @@ PORT="${SMOKE_WEB_PORT:-3999}"
 DB_PORT="${SMOKE_DB_PORT:-55999}"
 TARGET_IMAGE="${SMOKE_IMAGE:-ghcr.io/linh16122005/dictionary-app-5:latest}"
 
+# Tự động nhận diện host: nếu chạy trong Jenkins container (DooD) thì gọi ra host qua host.docker.internal
+if [ -n "${SMOKE_HOST:-}" ]; then
+  HOST="${SMOKE_HOST}"
+elif getent hosts host.docker.internal >/dev/null 2>&1; then
+  HOST="host.docker.internal"
+else
+  HOST="localhost"
+fi
+
 echo "====================================================="
 echo "Bắt đầu Smoke Test"
 echo "Project Name : ${PROJECT_NAME}"
 echo "Test Image   : ${TARGET_IMAGE}"
+echo "Web Host     : ${HOST}"
 echo "Web Port     : ${PORT}"
 echo "====================================================="
 
@@ -37,7 +47,7 @@ docker compose -p "${PROJECT_NAME}" \
   up -d --remove-orphans
 
 echo "--- Đang kiểm tra phản hồi từ ứng dụng (tối đa 30 giây) ---"
-HEALTH_URL="http://localhost:${PORT}/api/health"
+HEALTH_URL="http://${HOST}:${PORT}/api/health"
 PASSED=false
 
 for i in $(seq 1 30); do
@@ -51,7 +61,7 @@ done
 
 if [ "${PASSED}" = true ]; then
   echo "--- Testing endpoint /api/define/computer ---"
-  curl -s "http://localhost:${PORT}/api/define/computer" || true
+  curl -s "http://${HOST}:${PORT}/api/define/computer" || true
   echo ""
   echo "====================================================="
   echo "SMOKE TEST THÀNH CÔNG!"
